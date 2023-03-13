@@ -53,6 +53,10 @@ function parser.name_parser(line, i, opts)
             COLOR_NAME_MAXLEN = COLOR_NAME_MAXLEN and max(#name, COLOR_NAME_MAXLEN) or #name
             COLOR_MAP[name] = v
             COLOR_TRIE:insert(name)
+            -- Replace the - with _ for typewind colors
+            local name_ = name:gsub("-", "_")
+            COLOR_MAP[name_] = v
+            COLOR_TRIE:insert(name_)
           end
         end
       end
